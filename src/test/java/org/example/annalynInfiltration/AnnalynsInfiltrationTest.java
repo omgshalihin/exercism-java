@@ -80,4 +80,22 @@ class AnnalynsInfiltrationTest {
         boolean prisonerIsAwake = false;
         assertFalse(AnnalynsInfiltration.canSignalPrisoner(archerIsAwake, prisonerIsAwake));
     }
+
+    @Test
+    public void cannot_release_prisoner_if_only_archer_is_asleep_and_pet_dog_is_absent() {
+        boolean knightIsAwake = true;
+        boolean archerIsAwake = false;
+        boolean prisonerIsAwake = true;
+        boolean petDogIsPresent = false;
+        assertFalse(AnnalynsInfiltration.canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent));
+    }
+
+    @Test
+    public void can_release_prisoner_if_only_archer_is_asleep_and_pet_dog_is_present() {
+        boolean knightIsAwake = true;
+        boolean archerIsAwake = false;
+        boolean prisonerIsAwake = true;
+        boolean petDogIsPresent = true;
+        assertTrue(AnnalynsInfiltration.canFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent));
+    }
 }
