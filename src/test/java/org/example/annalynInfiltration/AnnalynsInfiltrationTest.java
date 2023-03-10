@@ -55,4 +55,29 @@ class AnnalynsInfiltrationTest {
         boolean prisonerIsAwake = false;
         assertEquals(AnnalynsInfiltration.canSpy(knightIsAwake, archerIsAwake, prisonerIsAwake), false);
     }
+
+    @Test
+    void can_signal_prisoner_if_only_prisonerIsAwake() {
+        boolean archerIsAwake = false;
+        boolean prisonerIsAwake = true;
+        assertTrue(AnnalynsInfiltration.canSignalPrisoner(archerIsAwake, prisonerIsAwake));
+    }
+    @Test
+    void cannot_signal_prisoner_if_archerIsAwake() {
+        boolean archerIsAwake = true;
+        boolean prisonerIsAwake = false;
+        assertFalse(AnnalynsInfiltration.canSignalPrisoner(archerIsAwake, prisonerIsAwake));
+    }
+    @Test
+    void cannot_signal_prisoner_if_bothAwake() {
+        boolean archerIsAwake = true;
+        boolean prisonerIsAwake = true;
+        assertFalse(AnnalynsInfiltration.canSignalPrisoner(archerIsAwake, prisonerIsAwake));
+    }
+    @Test
+    void cannot_signal_prisoner_if_bothAsleep() {
+        boolean archerIsAwake = false;
+        boolean prisonerIsAwake = false;
+        assertFalse(AnnalynsInfiltration.canSignalPrisoner(archerIsAwake, prisonerIsAwake));
+    }
 }

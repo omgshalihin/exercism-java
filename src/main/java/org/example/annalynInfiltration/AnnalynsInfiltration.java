@@ -9,21 +9,36 @@ class AnnalynsInfiltration {
     }
 
     public static boolean canSpy(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake) {
-        Map<String, Boolean> enemyState = new LinkedHashMap<>(Map.of(
+        Map<String, Boolean> stateMap = new LinkedHashMap<>(Map.of(
                 "knightIsAwake", knightIsAwake,
                 "archerIsAwake", archerIsAwake,
                 "prisonerIsAwake", prisonerIsAwake
         ));
 
-        long numberOfEnemiesAwake = enemyState.values().stream()
+        long countAwake = stateMap.values().stream()
                 .filter(state -> state)
                 .count();
 
-        return numberOfEnemiesAwake > 0;
+        return countAwake > 0;
     }
 
     public static boolean canSignalPrisoner(boolean archerIsAwake, boolean prisonerIsAwake) {
-        throw new UnsupportedOperationException("Please implement the (static) AnnalynsInfiltration.canSignalPrisoner() method");
+        Map<String, Boolean> stateMap = new LinkedHashMap<>(Map.of(
+                "archerIsAwake", archerIsAwake,
+                "prisonerIsAwake", prisonerIsAwake
+        ));
+
+        long ifPrisonerIsAwake = stateMap.entrySet().stream()
+                .filter(character -> character.getKey().equals("prisonerIsAwake"))
+                .filter(Map.Entry::getValue)
+                .count();
+
+        long ifArcherIsAsleep = stateMap.entrySet().stream()
+                .filter(character -> character.getKey().equals("archerIsAwake"))
+                .filter(Map.Entry::getValue)
+                .count();
+
+        return ifPrisonerIsAwake == 1 && ifArcherIsAsleep == 0;
     }
 
     public static boolean canFreePrisoner(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake, boolean petDogIsPresent) {
