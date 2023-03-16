@@ -2,6 +2,8 @@ package org.example.blackjack;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.IntStream;
 
 public class Blackjack {
 
@@ -24,7 +26,6 @@ public class Blackjack {
 
 
     public int parseCard(String card) {
-        System.out.println(cardValueMap);
         return cardValueMap.get(card);
     }
 
@@ -33,11 +34,23 @@ public class Blackjack {
     }
 
     public String largeHand(boolean isBlackjack, int dealerScore) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.largeHand method");
+        if (isBlackjack && dealerScore < 10) {
+            return "W";
+        } else if (isBlackjack && dealerScore >= 10) {
+            return "S";
+        } else {
+            return "P";
+        }
     }
 
     public String smallHand(int handScore, int dealerScore) {
-        throw new UnsupportedOperationException("Please implement the Blackjack.smallHand method");
+        if (handScore >= 17) {
+            return "S";
+        } else if (handScore <= 11) {
+            return "H";
+        } else {
+            return dealerScore >= 7 ? "H" : "S";
+        }
     }
 
     // FirstTurn returns the semi-optimal decision for the first turn, given the cards of the player and the dealer.
@@ -47,9 +60,11 @@ public class Blackjack {
         int handScore = parseCard(card1) + parseCard(card2);
         int dealerScore = parseCard(dealerCard);
 
-        if (20 < handScore) {
+        if (handScore > 20) {
+            System.out.println("here 1");
             return largeHand(isBlackjack(card1, card2), dealerScore);
         } else {
+            System.out.println("here 2");
             return smallHand(handScore, dealerScore);
         }
     }

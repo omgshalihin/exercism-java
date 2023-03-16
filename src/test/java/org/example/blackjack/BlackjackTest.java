@@ -25,4 +25,14 @@ class BlackjackTest {
         assertEquals(blackjack.firstTurn("ace", "ace", "ace"), "P");
     }
 
+    @Test
+    public void firstTurnWithJackAceAndDealerAce() {
+        assertEquals(blackjack.firstTurn("jack", "ace", "ace"), "S");
+    }
+
+    @Test
+    public void noBlackjackWithFive() {
+        assertFalse(blackjack.isBlackjack("ace", "five"));
+    }
+
 }
