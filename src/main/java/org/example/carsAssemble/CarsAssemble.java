@@ -40,8 +40,7 @@ public class CarsAssemble {
         }
         double successRate = successRates.get(speed);
         double carsProducedPerHourAtSpeed6 = Double.parseDouble(String.valueOf(speed)) * carsProducedPerHourAtSpeed1 * successRate;
-        int carsProducedPerMinuteAtSpeed6 = (int) (Math.floor(carsProducedPerHourAtSpeed6 / 60.0));
-        return carsProducedPerMinuteAtSpeed6;
+        return (int) (Math.floor(carsProducedPerHourAtSpeed6 / 60.0));
     }
 
 }

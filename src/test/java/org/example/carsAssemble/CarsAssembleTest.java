@@ -1,8 +1,6 @@
 package org.example.carsAssemble;
 
 import org.junit.jupiter.api.Test;
-
-import static jdk.internal.org.jline.utils.Colors.epsilon;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarsAssembleTest {
