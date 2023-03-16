@@ -19,4 +19,22 @@ class MicroBlogTest {
         assertEquals(microBlog.truncate(input), "Goodb");
     }
 
+    @Test
+    public void royalFlush() {
+        String expected = "🃎🂸🃅🃋🃍";
+        assertEquals(expected, microBlog.truncate("🃎🂸🃅🃋🃍🃁🃊"));
+    }
+
+    @Test
+    public void englishAndEmojiShort() {
+        String expected = "Fly 🛫";
+        assertEquals(expected, microBlog.truncate("Fly 🛫"));
+    }
+
+    @Test
+    public void emojiLong() {
+        String expected = "❄🌡🤧🤒🏥";
+        assertEquals(expected, microBlog.truncate("❄🌡🤧🤒🏥🕰😀"));
+    }
+
 }
