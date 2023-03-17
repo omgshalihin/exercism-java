@@ -16,17 +16,28 @@ public class Darts {
 //    and the inner circle a radius of 1.
 
     Map<String, Integer> points = new HashMap<>(Map.of(
-            "outside", 0,
             "outer", 1,
             "middle", 5,
             "inner", 10
     ));
+
+    // UNITS
+    final int OUTER_R = 10;
+    final int MIDDLE_R = 5;
+    final int INNER_R = 1;
+
     int score(double xOfDart, double yOfDart) {
-        double [] coordinates = {xOfDart, yOfDart};
-        if (coordinates[0] > 5.0 && coordinates[1] > 5.0) {
-            return points.get("outside");
-        } else {
-            return 10;
+        double[] coordinates = {xOfDart, yOfDart};
+        double shortestDistance = Math.sqrt(Math.pow(coordinates[0], 2) + Math.pow(coordinates[1], 2));
+        if (shortestDistance <= INNER_R) {
+            return points.get("inner");
         }
+        if (shortestDistance <= MIDDLE_R) {
+            return points.get("middle");
+        }
+        if (shortestDistance <= OUTER_R) {
+            return points.get("outer");
+        }
+        return 0;
     }
 }
