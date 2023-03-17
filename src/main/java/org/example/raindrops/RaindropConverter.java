@@ -10,8 +10,18 @@ public class RaindropConverter {
 //    does not have any of 3, 5, or 7 as a factor, the result should be the digits of the number.
 
     String convert(int number) {
-        return null;
+
+        StringBuilder sb = new StringBuilder();
+
+        if (number % 3 == 0) {
+            sb.append("Pling");
+        }
+        if (number % 5 == 0) {
+            sb.append("Plang");
+        }
+        if (number % 7 == 0) {
+            sb.append("Plong");
+        }
+        return sb.isEmpty() ? String.valueOf(number) : sb.toString();
     }
-
-
 }
