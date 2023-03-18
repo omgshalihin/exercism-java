@@ -21,4 +21,30 @@ class BirdWatcherTest {
         assertEquals(birdWatcher.getBusyDays(), 0);
     }
 
+    @Test
+    public void shouldReturn1ForTodayCount() {
+        int[] birdsPerDay = { 2, 5, 0, 7, 4, 1 };
+        birdWatcher = new BirdWatcher(birdsPerDay);
+        assertEquals(birdWatcher.getToday(), 1);
+    }
+
+    @Test
+    public void shouldReturn2ForTodayCountAfterIncrementing() {
+        int[] birdsPerDay = { 2, 5, 0, 7, 4, 1 };
+        birdWatcher = new BirdWatcher(birdsPerDay);
+        birdWatcher.incrementTodaysCount();
+        assertEquals(birdWatcher.getToday(), 2);
+    }
+
+    @Test
+    public void itShouldNotHaveDaysWithoutBirds() {
+        birdWatcher = new BirdWatcher(new int[] { 1, 2, 5, 3, 7, 8, 4 });
+        assertFalse(birdWatcher.hasDayWithoutBirds());
+    }
+
+    @Test
+    public void itTestGetCountForFirstDays() {
+        assertEquals(birdWatcher.getCountForFirstDays(4), 10);
+    }
+
 }

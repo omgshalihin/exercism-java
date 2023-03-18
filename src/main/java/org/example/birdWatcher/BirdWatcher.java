@@ -16,24 +16,40 @@ public class BirdWatcher {
     }
 
     public int getToday() {
-        throw new UnsupportedOperationException("Please implement the BirdCount.getToday() method");
+        int today = birdsPerDay.length - 1;
+        return birdsPerDay[today];
     }
 
     public void incrementTodaysCount() {
-        throw new UnsupportedOperationException("Please implement the BirdCount.incrementTodaysCount() method");
+        int today = birdsPerDay.length - 1;
+        birdsPerDay[today] ++;
     }
 
     public boolean hasDayWithoutBirds() {
-        throw new UnsupportedOperationException("Please implement the BirdCount.hasDayWithoutBirds() method");
+        return Arrays.stream(birdsPerDay)
+                .anyMatch(count -> count < 1);
     }
 
     public int getCountForFirstDays(int numberOfDays) {
-        throw new UnsupportedOperationException("Please implement the BirdCount.getCountForFirstDays() method");
+        int sum = 0;
+        int actualLength = birdsPerDay.length;
+        if (actualLength < numberOfDays) {
+            for (int i = 0; i < actualLength; i++) {
+                System.out.println(birdsPerDay[i]);
+                sum += birdsPerDay[i];
+            }
+        } else {
+            for (int i = 0; i < numberOfDays; i++) {
+                System.out.println(birdsPerDay[i]);
+                sum += birdsPerDay[i];
+            }
+        }
+        return sum;
     }
 
     public int getBusyDays() {
-        System.out.println(Arrays.toString(birdsPerDay));
-        return 0;
-
+        return (int) Arrays.stream(birdsPerDay)
+                .filter(count -> count >= 5)
+                .count();
     }
 }
