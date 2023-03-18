@@ -1,5 +1,7 @@
 package org.example.birdWatcher;
 
+import java.util.Arrays;
+
 public class BirdWatcher {
 
     private final int[] birdsPerDay;
@@ -9,7 +11,8 @@ public class BirdWatcher {
     }
 
     public int[] getLastWeek() {
-        throw new UnsupportedOperationException("Please implement the BirdCount.getLastWeek() method");
+        System.out.println(Arrays.toString(birdsPerDay));
+        return birdsPerDay;
     }
 
     public int getToday() {
@@ -29,6 +32,8 @@ public class BirdWatcher {
     }
 
     public int getBusyDays() {
-        throw new UnsupportedOperationException("Please implement the BirdCount.getBusyDays() method");
+        System.out.println(Arrays.toString(birdsPerDay));
+        return 0;
+
     }
 }
