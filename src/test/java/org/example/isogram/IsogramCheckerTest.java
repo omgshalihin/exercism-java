@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IsogramCheckerTest {
 
-    private IsogramChecker isogramChecker;
+    IsogramChecker isogramChecker = new IsogramChecker();
 
     @Before
     public void setUp() {
