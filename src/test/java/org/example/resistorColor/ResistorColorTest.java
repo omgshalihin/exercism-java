@@ -4,15 +4,20 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ResistorColorTest {
 
-    private ResistorColor resistorColor;
+    ResistorColor resistorColor = new ResistorColor();
+
+
     @Before
     public void setup() {
         resistorColor = new ResistorColor();
     }
+
     @Test
     public void testBlackColorCode() {
         assertEquals(resistorColor.colorCode("black"), 0);
@@ -30,6 +35,6 @@ class ResistorColorTest {
     @Ignore("Remove to run test")
     @Test
     public void testColors() {
-        assertEquals(resistorColor.colors(), new String[]{"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"});
+        assertArrayEquals(resistorColor.colors(), new String[]{"black", "brown", "red", "orange", "yellow", "green", "blue", "violet", "grey", "white"});
     }
 }
