@@ -4,7 +4,6 @@ import java.math.BigInteger;
 
 public class Grains {
     BigInteger grainsOnSquare(final int square) {
-
         if (square <= 0 || square >= 65) {
             throw new IllegalArgumentException("square must be between 1 and 64");
         }
