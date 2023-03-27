@@ -4,10 +4,15 @@ import java.math.BigInteger;
 
 public class Grains {
     BigInteger grainsOnSquare(final int square) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+
+        if (square <= 0 || square >= 65) {
+            throw new IllegalArgumentException("square must be between 1 and 64");
+        }
+
+        return BigInteger.valueOf(2).pow(square - 1);
     }
 
     BigInteger grainsOnBoard() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return BigInteger.valueOf(2).pow(64).subtract(BigInteger.ONE);
     }
 }
