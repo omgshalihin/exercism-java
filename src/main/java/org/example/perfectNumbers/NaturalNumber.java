@@ -9,13 +9,10 @@ public class NaturalNumber {
     int NUMBER;
 
     public NaturalNumber(int i) {
-        System.out.println(i);
         this.NUMBER = i;
     }
 
     public Classification getClassification() {
-        System.out.println(NUMBER);
-
         int positiveDivisor = 1;
         List<Integer> aliquotSumArray = new ArrayList<>();
 
@@ -28,8 +25,15 @@ public class NaturalNumber {
 
         System.out.println(aliquotSumArray);
 
-
-        return null;
+        int aliquotSum = aliquotSumArray.stream().reduce(Integer::sum).get();
+        
+        if (aliquotSum == NUMBER) {
+            return Classification.PERFECT;
+        } else if (aliquotSum > NUMBER) {
+            return Classification.ABUNDANT;
+        } else {
+            return Classification.DEFICIENT;
+        }
     }
 }
 
