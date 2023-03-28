@@ -49,25 +49,27 @@ class NaturalNumberTest {
     public void testLargeDeficientNumberIsClassifiedCorrectly() {
         assertEquals(Classification.DEFICIENT, new NaturalNumber(33550337).getClassification());
     }
-//    @Test
-//    /*
-//     * The number 1 has no proper divisors (https://en.wikipedia.org/wiki/Divisor#Further_notions_and_facts), and the
-//     * additive identity is 0, so the aliquot sum of 1 should be 0. Hence 1 should be classified as deficient.
-//     */
-//    public void testThatOneIsCorrectlyClassifiedAsDeficient() {
-//        assertEquals(Classification.DEFICIENT, new NaturalNumber(1).getClassification());
-//    }
-//    @Test
-//    public void testThatNonNegativeIntegerIsRejected() {
-//        assertThatExceptionOfType(IllegalArgumentException.class)
-//                .isThrownBy(() -> new NaturalNumber(0))
-//                .withMessage("You must supply a natural number (positive integer)");
-//    }
-//    @Test
-//    public void testThatNegativeIntegerIsRejected() {
-//        assertThatExceptionOfType(IllegalArgumentException.class)
-//                .isThrownBy(() -> new NaturalNumber(-1))
-//                .withMessage("You must supply a natural number (positive integer)");
-//    }
+    @Test
+    /*
+     * The number 1 has no proper divisors (https://en.wikipedia.org/wiki/Divisor#Further_notions_and_facts), and the
+     * additive identity is 0, so the aliquot sum of 1 should be 0. Hence 1 should be classified as deficient.
+     */
+    public void testThatOneIsCorrectlyClassifiedAsDeficient() {
+        assertEquals(Classification.DEFICIENT, new NaturalNumber(1).getClassification());
+    }
+    @Test
+    public void testThatNonNegativeIntegerIsRejected() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new NaturalNumber(0),
+                "You must supply a natural number (positive integer)");
+    }
+    @Test
+    public void testThatNegativeIntegerIsRejected() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new NaturalNumber(-1),
+                "You must supply a natural number (positive integer)");
+    }
 
 }
