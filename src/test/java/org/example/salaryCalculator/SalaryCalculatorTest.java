@@ -24,5 +24,13 @@ class SalaryCalculatorTest {
     public void skippedAboveThreshold() {
         assertEquals(calculator.finalSalary(7, 0), 850.0);
     }
+    @Test
+    public void salaryRespectMaximum() {
+        assertEquals(calculator.finalSalary(0, 77), 2000.0);
+    }
+    @Test
+    public void salaryCanReachCloseToMaximum() {
+        assertEquals(calculator.finalSalary(0, 76), 1988.0);
+    }
 
 }
